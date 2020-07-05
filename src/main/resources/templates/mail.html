@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+        <style>
+            table {
+                border-spacing: 0;
+                border-collapse: collapse;
+                font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+                width: 600px;
+                color: #4c4c4c;
+                font-size: 15px;
+                line-height: 150%;
+                background-color: #ffffff;
+                margin-left: 20px ;
+                padding: 0;
+                border: 0;
+            }
+            .footer {
+                font-size: 10px;
+                color: gray;
+            }
+        </style>
+    </head>
+    <body>    
+        <table>
+          <!--  <tr>
+                <td align="center" style="padding: 40px 0 30px 0;">
+                    <img th:src="@{localhost:8080/resources/logo.png}" style="display: block;" width="100" height="100"/>
+                </td> -->
+            </tr>
+            <tr>
+                <td >
+                    <p th:text="'Dear '+${prefix}+'. ' + ${lastName}"></p>
+                    <p>You are now registered for access to the FSTG Journal Site:</p>
+                    <p th:text="${website}"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Your user name and password for  the account is as follows:</p>
+                    <p href="" th:text="'Email: '+ ${email}"></p>
+                    <p th:text="'Password: '+ ${confirmationUrl}"></p>
+                </td>
+            </tr>
+            <br>
+            <tr>
+                <td class="footer">
+                    <p>Editorial Assistant</p>
+                    <p th:text="${location}"></p>
+                </td>
+            </tr>
+        </table>
+
+    </body>
+</html>

@@ -1,0 +1,6 @@
+@startuml
+
+class example {
+int name 
+}
+@enduml
