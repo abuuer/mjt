@@ -25,6 +25,8 @@ public interface UserArticleDetailRepository extends JpaRepository<UserArticleDe
 
     UserArticleDetail findByArticle_ReferenceAndUser_Email(String reference, String email);
 
+    UserArticleDetail findBymainAuthorCheckAndArticle_Reference(int i, String ref);
+
     @Transactional
     void deleteByUser_EmailAndArticle_Reference(String email, String reference);
 

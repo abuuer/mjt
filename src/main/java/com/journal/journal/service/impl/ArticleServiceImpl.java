@@ -27,9 +27,14 @@ import com.journal.journal.service.facade.TagService;
 import com.journal.journal.service.facade.UserArticleDetailService;
 import com.journal.journal.service.facade.UserService;
 import com.journal.journal.service.facade.UserSpecialtyDetailService;
+import com.journal.journal.service.util.email.service.EmailService;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.MessagingException;
 import org.springframework.http.ResponseEntity;
 
 /**
@@ -57,6 +62,8 @@ public class ArticleServiceImpl implements ArticleService {
     private UserSpecialtyDetailService userSpecialtyDetailService;
     @Autowired
     private IssueService issueService;
+    @Autowired
+    private EmailService emailService;
 
     @Override
     public int save(Article article) {
@@ -208,6 +215,12 @@ public class ArticleServiceImpl implements ArticleService {
                 farticle.setAcceptDate(new Date());
             }
             articleRepository.save(farticle);
+            UserArticleDetail uad = userArticleDetailService.findBymainAuthorCheckAndArticle_Reference(1, articleRef);
+            try {
+                emailService.sendDecisionEmail(uad);
+            } catch (IOException | MessagingException ex) {
+                Logger.getLogger(UserArticleDetailServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
             return ResponseEntity.ok(new MessageResponse("Status updated to " + status));
         }
     }

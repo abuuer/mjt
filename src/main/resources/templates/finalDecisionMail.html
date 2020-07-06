@@ -33,16 +33,32 @@
             </tr>
             <tr>
                 <td >
-                    <p th:text="'Dear '+${prefix}+'. ' + ${lastName}"></p>
-                    <p>You are now registered for access to the Moroccan Journal of Technology Site:</p>
-                    <p th:text="${website}"></p>
+                    <p th:text="'Dear '+${prefix}+'. '+ ${firstName} +' ' + ${lastName}"></p>
+                    <p>Thank you for taking the time to submit your paper to be 
+                        reviewed by the editorial board of MJT. We appreciate your interest in submitting your article to the <b>Moroccan Journal of Technology</b></p>   
                 </td>
             </tr>
             <tr>
                 <td>
-                    <p>Your user name and password for the account is as follows:</p>
-                    <p href="" th:text="'Email: '+ ${email}"></p>
-                    <p th:text="'Password: '+ ${confirmationUrl}"></p>
+                    <p>The editorial team and a group of expert reviewers have
+                        assessed your submission a got to the following decision concerning your paper : </p>
+                    <p><b th:text="${decision}"></b></p>
+                </td>
+            </tr>
+            <br>
+            <tr>
+                <td>
+                    <p>Paper's full information : </p>
+                    <p>Title: <b th:text="${title}"></b></p>
+                    <p>Type: <b th:text="${type}"></b></p>
+                    <p>Submission date :<b th:text="${subDate}"></b></p>
+                </td>
+            </tr>
+            <br>
+            <tr>
+                <td>
+                    <p>To see full reviews and more details, please visit your submission's table.</p>
+                    <p>Sincerely,</p>
                 </td>
             </tr>
             <br>

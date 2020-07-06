@@ -19,6 +19,8 @@ public interface UserArticleDetailService {
     void save(UserArticleDetail userArticleDetail);
 
     List<UserArticleDetail> findByUser_Email(String email);
+    
+    UserArticleDetail findBymainAuthorCheckAndArticle_Reference(int i, String ref);
 
     List<UserArticleDetail> findByArticle_Reference(String reference);
 
