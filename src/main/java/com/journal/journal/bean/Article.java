@@ -40,6 +40,7 @@ public class Article implements Serializable {
     private Double amount;
     private String status;
     private String decision;
+    private String additionalNotes;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date submitDate;
     @Temporal(javax.persistence.TemporalType.DATE)

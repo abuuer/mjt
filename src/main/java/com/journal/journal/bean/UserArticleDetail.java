@@ -29,6 +29,7 @@ public class UserArticleDetail implements Serializable {
     private String userFunction;
     private int mainAuthorCheck; // 1: main author / 0: co-author / -1: reviewer
     private String reviewerDecision;
+    private String additionalNotes;
     @ManyToOne
     private User user;
     
@@ -52,6 +53,15 @@ public class UserArticleDetail implements Serializable {
     public void setReviewerDecision(String reviewerDecision) {
         this.reviewerDecision = reviewerDecision;
     }
+	
+	 public String getAdditionalNotes() {
+        return additionalNotes;
+    }
+
+    public void setAdditionalNotes(String additionalNotes) {
+        this.additionalNotes = additionalNotes;
+    }
+	
 
     public String getUserFunction() {
         return userFunction;

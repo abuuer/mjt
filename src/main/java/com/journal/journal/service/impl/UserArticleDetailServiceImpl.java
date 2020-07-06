@@ -124,7 +124,8 @@ public class UserArticleDetailServiceImpl implements UserArticleDetailService {
     }
     
     @Override
-    public ResponseEntity<?> updateDecision(String email, String reference, String decision) {
+    public ResponseEntity<?> updateDecision(String email, String reference, 
+            String decision, String additionalNotes) {
         Optional<User> fUser = userService.findByEmail(email);
         Article farticle = articleService.findByReference(reference);
         UserArticleDetail uad = repository.findByArticle_ReferenceAndUser_Email(reference, email);
@@ -138,6 +139,7 @@ public class UserArticleDetailServiceImpl implements UserArticleDetailService {
                     .body(new MessageResponse("Article doesn't exist"));
         } else {
             uad.setReviewerDecision(decision);
+            uad.setAdditionalNotes(additionalNotes);
             repository.save(uad);
             return ResponseEntity.ok(new MessageResponse("Decision is saved"));
         }

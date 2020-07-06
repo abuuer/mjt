@@ -32,5 +32,6 @@ public interface UserArticleDetailService {
     
     int countReviewers(int articleId);
     
-    ResponseEntity<?> updateDecision(String email, String reference, String decision);
+    ResponseEntity<?> updateDecision(String email, String reference, 
+            String decision, String additionalNotes);
 }

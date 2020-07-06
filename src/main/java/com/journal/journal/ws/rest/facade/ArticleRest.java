@@ -60,8 +60,8 @@ public class ArticleRest {
 
     @ApiOperation("This method update the article status (Accepted - Reviewed - Rejected ...)")
     @PutMapping("/updateStatus/articleRef/{articleRef}/status/{status}/decision/{decision}")
-    public ResponseEntity<?> updateStatus(@PathVariable String articleRef
-            , @PathVariable String status, @PathVariable String decision) {
+    public ResponseEntity<?> updateStatus(@PathVariable String articleRef,
+             @PathVariable String status, @PathVariable String decision) {
         return articleService.updateStatus(articleRef, status, decision);
     }
 
@@ -69,6 +69,11 @@ public class ArticleRest {
     @GetMapping("/findByStatus/status/{status}")
     public List<Article> findByStatus(@PathVariable String status) {
         return articleService.findByStatus(status);
+    }
+
+    @GetMapping("/findByReference/referenece/{referenece}")
+    public Article findByReference(@PathVariable String referenece) {
+        return articleService.findByReference(referenece);
     }
 
 }

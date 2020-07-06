@@ -5,6 +5,7 @@
  */
 package com.journal.journal.service.impl;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.journal.journal.bean.Article;
 import com.journal.journal.bean.ArticleTagsDetail;
 import com.journal.journal.bean.FileInfo;
@@ -92,7 +93,7 @@ public class ArticleServiceImpl implements ArticleService {
                 for (UserArticleDetail userArticleDetail : article.getUserArticleDetails()) {
                     Optional<User> fUser = userService.findByEmail(userArticleDetail.getUser().getEmail());
                     // save user speacialty from article submission
-                    if (fUser.get().getPassword() != null) {
+                    if (fUser.isPresent()) {
                         check = 1;
                     } else {
                         check = 0;
@@ -187,7 +188,7 @@ public class ArticleServiceImpl implements ArticleService {
     public Article findByReference(String referenece) {
         Article a = articleRepository.findByReference(referenece);
         for (UserArticleDetail uad : a.getUserArticleDetails()) {
-            uad.setArticle(null);
+            uad.getArticle().setUserArticleDetails(null);
             uad.getUser().setUserArticleDetails(null);
         }
         return a;

@@ -55,9 +55,11 @@ public class UserArticleDetailRest {
     }
 
     @ApiOperation("This method updates the decision of a reviewer on an article")
-    @PutMapping("/updateDecision/email/{email}/articleRef/{reference}/decision/{decision}")
-    public ResponseEntity<?> updateDecision(String email, String reference, String decision) {
-        return userArticleDetailService.updateDecision(email, reference, decision);
+    @PutMapping("/updateDecision/email/{email}/articleRef/{reference}/decision/"
+            + "{decision}/additionalNotes/{additionalNotes}")
+    public ResponseEntity<?> updateDecision(@PathVariable String email,@PathVariable String reference
+            ,@PathVariable String decision,@PathVariable String additionalNotes) {
+        return userArticleDetailService.updateDecision(email, reference, decision, additionalNotes);
     }
 
     

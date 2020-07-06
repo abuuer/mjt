@@ -8,6 +8,7 @@ package com.journal.journal.service.impl;
 import com.journal.journal.bean.Article;
 import com.journal.journal.bean.Issue;
 import com.journal.journal.bean.Published;
+import com.journal.journal.bean.UserArticleDetail;
 import com.journal.journal.dao.PublishedRepositoy;
 import com.journal.journal.security.payload.response.MessageResponse;
 import com.journal.journal.service.facade.ArticleService;
@@ -97,6 +98,10 @@ public class PublishedServiceImpl implements PublishedService {
         List<Published> fPublished = publishedRepositoy.findMostRead();
         List<Article> listArticle = new ArrayList<>();
         fPublished.forEach((published) -> {
+            for (UserArticleDetail uad :  published.getArticle().getUserArticleDetails()) {
+                uad.setArticle(null);
+                uad.getUser().setUserArticleDetails(null);
+            }
             listArticle.add(published.getArticle());
         });
         return listArticle;
